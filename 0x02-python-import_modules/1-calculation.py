@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-def main():
+if __name__ == "__main__":
     a = 10
     b = 5
     import calculator_1
-    print("{:d} + {:d} = {:d}".format(a, b, calculator.add(a, b)))
-    print("{:d} - {:d} = {:d}".format(a, b, calculator.sub(a, b)))
-    print("{:d} * {:d} = {:d}".format(a, b, calculator.mul(a, b)))
-    print("{:d} / {:d} = {:.2f}".format(a, b, calculator.div(a, b)))
 
+    result_add = calculator_1.add(a, b)
+    result_sub = calculator_1.sub(a, b)
+    result_mul = calculator_1.mul(a, b)
+    result_div = calculator_1.div(a, b)
 
-if __name__ == "__main__":
-    main()
+    print("{} + {} = {}".format(a, b, result_add))
+    print("{} - {} = {}".format(a, b, result_sub))
+    print("{} * {} = {}".format(a, b, result_mul))
+    print("{} / {} = {}".format(a, b, result_div))
