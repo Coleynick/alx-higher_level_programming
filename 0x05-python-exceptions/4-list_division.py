@@ -3,8 +3,8 @@ def list_division(my_list_1, my_list_2, list_length):
     total = []
     for y in range(list_length):
         try:
-            a = float(my_list_1[y])
-            b = float(my_list_2[y])
+            a = my_list_1[y]
+            b = my_list_2[y]
             total_division = a / b
             total.append(total_division)
         except ZeroDivisionError:
@@ -15,6 +15,7 @@ def list_division(my_list_1, my_list_2, list_length):
             total.append(0)
         except IndexError:
             print("out of range")
+            total.append(0)
         finally:
             pass
     return (total)
