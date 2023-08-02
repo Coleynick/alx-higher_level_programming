@@ -58,7 +58,8 @@ class Square:
         elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-     @position.setter
+
+    @position.setter
     def position(self, value):
         """Sets square position.
 
@@ -84,7 +85,7 @@ class Square:
              Current square area(int).
         """
         return self.__size ** 2
-        
+
     def my_print(self):
         """
         Print square using the character '#'.
