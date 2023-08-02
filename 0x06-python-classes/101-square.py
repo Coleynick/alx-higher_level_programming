@@ -114,4 +114,4 @@ class Square:
                 result += "\n"
             for a in range(self.__size):
                 result += " " * self.__position[0] + "#" * self.__size + "\n"
-        return result
+        return result.rstrip()
