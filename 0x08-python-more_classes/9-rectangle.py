@@ -27,6 +27,17 @@ class Rectangle:
         self.height = height
         Rectangle.number_of_instances += 1
 
+    @classmethod
+    def square(cls, size=0):
+        """Create a square instance of Rectangle.
+        Args:
+            cls (class): The class itself.
+            size (int): The square size.
+        Returns:
+            Rectangle: A new Rectangle instance representing a square.
+        """
+        return cls(size, size)
+
     @property
     def width(self):
         """Retrieve rectangle width."""
@@ -109,16 +120,6 @@ class Rectangle:
             raise TypeError("rect_2 must be an instance of Rectangle")
 
         return rect_1 if rect_1.area() >= rect_2.area() else rect_2
-
-    def square(cls, size=0):
-        """Create a square instance of Rectangle.
-        Args:
-            cls (class): The class itself.
-            size (int): The square size.
-        Returns:
-            Rectangle: A new Rectangle instance representing a square.
-        """
-        return cls(size, size)
 
     def __str__(self):
         """String repr of rectangle using '#'.
