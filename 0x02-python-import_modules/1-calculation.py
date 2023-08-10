@@ -9,5 +9,6 @@ def main():
     print("{} * {} = {}".format(a, b, math.mul(a, b)))
     print("{} / {} = {}".format(a, b, math.div(a, b)))
 
+
 if __name__ == "__main__":
     main()
