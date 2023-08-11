@@ -5,8 +5,8 @@ import hidden_4 as p
 def main():
     name = dir(p)
     for n in name:
-        if n[0] == "__":
-            return
+        if n[:2] == "__":
+            continue
         else:
             print(n)
 
