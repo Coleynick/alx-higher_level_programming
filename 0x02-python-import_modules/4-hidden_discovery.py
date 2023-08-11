@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import hidden_4 as p
+
+
 def main():
     name = dir(p)
     for n in name:
@@ -7,3 +9,7 @@ def main():
             return
         else:
             print(n)
+
+
+if __name__ == "__main__":
+    main()
