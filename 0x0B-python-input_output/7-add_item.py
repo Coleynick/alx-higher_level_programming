@@ -14,7 +14,7 @@ try:
     dat = load_from_json_file("add_item.json")
 except Exception:
     dat = []
-
-for n in sys.argv[1:]:
-    dat.append(n)
+arg = sys.argv
+for n in range(1, len(sys.argv)):
+    dat.append(arg[n])
 save_to_json_file(dat, "add_item.json")
