@@ -33,9 +33,11 @@ class Student:
                 if hasattr(self, i):
                     attr_dict[i] = getattr(self, i)
             return attr_dict
+
+
 def reload_from_json(self, json):
-        """
-        Substitutes all attr of the Student inst based on a dict.
-        """
-        for key, value in json.items():
-            setattr(self, key, value)
+    """
+    Substitutes all attr of the Student inst based on a dict.
+    """
+    for key, value in json.items():
+        setattr(self, key, value)
