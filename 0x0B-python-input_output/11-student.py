@@ -35,9 +35,9 @@ class Student:
             return attr_dict
 
 
-def reload_from_json(self, json):
-    """
-    Substitutes all attr of the Student inst based on a dict.
-    """
-    for key, value in json.items():
-        setattr(self, key, value)
+    def reload_from_json(self, json):
+        """
+        Substitutes all attr of the Student inst based on a dict.
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
