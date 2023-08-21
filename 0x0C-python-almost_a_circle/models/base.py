@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Base """
-
-
+import csv
 import json
+import turtle
 
 
 class Base:
@@ -103,3 +103,34 @@ class Base:
             return [cls.create_from_csv(row) for row in dataa]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Turtle pyt"""
+        scrin = turtle.Screen()
+        scrin.bgcolor("white")
+
+        draw = turtle.Turtle()
+        draw.speed(1)
+
+        draw.color("blue")
+        for rec in list_rectangles:
+            draw.penup()
+            draw.goto(rec.x, rec.y)
+            draw.pendown()
+            for y in range(2):
+                draw.forward(rec.width)
+                draw.left(90)
+                draw.forward(rec.height)
+                draw.left(90)
+
+        draw.color("green")
+        for sqr in list_squares:
+            draw.penup()
+            draw.goto(sqr.x, sqr.y)
+            draw.pendown()
+            for y in range(4):
+                draw.forward(sqr.size)
+                draw.left(90)
+
+        turtle.exitonclick()
