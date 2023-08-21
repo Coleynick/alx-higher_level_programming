@@ -81,53 +81,25 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """ save to csv """
+        if list_objs is None or len(list_objs) == 0:
+            dataa = []
+        else:
+            dataa = [obj.to_csv() for obj in list_objs]
+
         filename = cls.__name__ + ".csv"
-        with open(filename, 'w', newline='') as ifile:
+        with open(filename, mode='w', newline='') as ifile:
             writer = csv.writer(ifile)
-            if list_objs is not None:
-                for obj in list_objs:
-                    objDict = obj.to_dictionary()
-                    if cls.__name__ == "Rectangle":
-                        writer.writerow([
-                            objDict['id'],
-                            objDict['width'],
-                            objDict['height'],
-                            objDict['x'],
-                            objDict['y']
-                        ])
-                    elif cls.__name__ == "Square":
-                        writer.writerow([
-                            objDict['id'],
-                            objDict['size'],
-                            objDict['x'],
-                            objDict['y']
-                        ])
+            for r in dataa:
+                writer.writerow(r)
 
     @classmethod
     def load_from_file_csv(cls):
         """ load from csv """
         filename = cls.__name__ + ".csv"
         try:
-            with open(filename, 'r', newline='') as ifile:
+            with open(filename, mode='r', newline='') as ifile:
                 reader = csv.reader(ifile)
-                inst = []
-                for row in reader:
-                    if cls.__name__ == "Rectangle":
-                        instance = cls(
-                            width=int(row[1]),
-                            height=int(row[2]),
-                            x=int(row[3]),
-                            y=int(row[4]),
-                            id=int(row[0])
-                        )
-                    elif cls.__name__ == "Square":
-                        instance = cls(
-                            size=int(row[1]),
-                            x=int(row[2]),
-                            y=int(row[3]),
-                            id=int(row[0])
-                        )
-                    inst.append(instance)
-                return inst
+                dataa = [list(map(int, row)) for row in reader]
+            return [cls.create_from_csv(row) for row in dataa]
         except FileNotFoundError:
             return []
