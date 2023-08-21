@@ -87,3 +87,29 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """ Returns d area val of the Rec instance. """
+        return self.__width * self.__height
+
+    def display(self):
+        """ Update the Rec using # chars """
+        for i in range(self.__height):
+            print("#" * self.__width)
+
+    def update(self, *args, **kwargs):
+        """ Update d Rec attrs with args in order """
+        if args and len(args) > 0:
+            attr_lisst = ["id", "width", "height", "x", "y"]
+            for i, val in enumerate(args):
+                if i < len(attr_lisst):
+                    setattr(self, attr_lisst[i], val)
+        else:
+            for key, val in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, val)
+
+    def __str__(self):
+        """ Return str rep of d Rec """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
