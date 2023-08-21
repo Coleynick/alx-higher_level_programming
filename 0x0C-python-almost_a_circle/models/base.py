@@ -68,15 +68,25 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """Loads inst from JSON ifile."""
-        filename = cls.__name__ + ".json"
+        if list_objs is None or len(list_objs) == 0:
+            dataa = []
+        else:
+            dataa = [obj.to_csv() for obj in list_objs]
+
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', newline='') as ifile:
+            writer = csv.writer(ifile)
+            for r in data:
+                writer.writerow(r)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ load from csv """
+        filename = cls.__name__ + ".csv"
         try:
-            with open(filename, 'r') as ifile:
-                dataa = ifile.read()
-                if dataa:
-                    lisst_dicts = cls.from_json_string(dataa)
-                    inst = [cls.create(**dic) for dic in lisst_dicts]
-                    return inst
-                else:
-                    return []
+            with open(filename, mode='r', newline='') as ifile:
+                reader = csv.reader(ifile)
+                dataa = [list(map(int, row)) for row in reader]
+            return [cls.create_from_csv(row) for row in dataa]
         except FileNotFoundError:
             return []
